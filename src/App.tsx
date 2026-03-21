@@ -457,7 +457,13 @@ function App() {
     <main className={`app-shell${shouldShowCompareBar(compareSlugs) ? ' app-shell--has-compare-bar' : ''}`}>
       <header className="site-header">
         <div className="site-header__inner">
-          <p className="site-header__title">Works Finder</p>
+          <a className="site-header__logo-link" href="#">
+            <img
+              className="site-header__logo"
+              src={`${import.meta.env.BASE_URL}assets/images/meta/logo-white.png`}
+              alt="Aoki Design Studio"
+            />
+          </a>
           <button
             type="button"
             className="primary-button site-header__cta"

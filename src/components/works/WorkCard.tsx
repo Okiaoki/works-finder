@@ -146,6 +146,18 @@ export function WorkCard({
           </div>
         </header>
 
+        {work.budgetRange ? (
+          <div className="work-card__price">
+            <span className="work-card__price-label">参考価格</span>
+            <span className="work-card__price-value">{work.budgetRange}</span>
+            <span className="work-card__price-note">
+              {work.siteType === 'Webツール'
+                ? '※Webアプリケーションのため、通常のサイト制作とは異なります'
+                : '※実際の価格は要件により変動します'}
+            </span>
+          </div>
+        ) : null}
+
         <p className="work-card__summary">{work.summary}</p>
 
         <dl className="work-card__meta">

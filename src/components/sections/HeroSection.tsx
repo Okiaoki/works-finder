@@ -18,20 +18,38 @@ export function HeroSection({
   stats,
   taxonomies,
 }: HeroSectionProps) {
+  const bgImages = [
+    'aoki-beauty-clinic-full.jpg',
+    'aoki-tech-studio-full.jpg',
+    'cafe-aoki-full.jpg',
+    'aoki-mitumori-full.jpg',
+    'aoki-animation-full.jpg',
+  ]
+
   return (
     <section className="hero-section" aria-labelledby="hero-title">
+      <div className="hero-bg" aria-hidden="true">
+        {bgImages.map((img, i) => (
+          <img
+            key={img}
+            className={`hero-bg__img hero-bg__img--${i + 1}`}
+            src={`${import.meta.env.BASE_URL}assets/images/works/${img}`}
+            alt=""
+            loading="eager"
+          />
+        ))}
+      </div>
+      <div className="hero-section__overlay" />
       <div className="hero-section__layout">
         <div>
-          <img
-            className="hero-section__logo"
-            src={`${import.meta.env.BASE_URL}assets/images/meta/logo-white.png`}
-            alt="Aoki Design Studio"
-            width={96}
-            height={64}
-          />
-          <h1 id="hero-title">Works Finder</h1>
+          <h1 id="hero-title">
+            <span className="hero-title__main">Works</span>
+            {' '}
+            <span className="hero-title__accent">Finder</span>
+          </h1>
           <p className="hero-section__lead">
             制作実績から、ご依頼に近い事例を見つけられます。
+            <br />
             検索・絞り込み・比較で、制作の方向性を具体的にイメージしてみてください。
           </p>
 
@@ -39,22 +57,18 @@ export function HeroSection({
             <a className="hero-link" href="#archive">
               作品一覧を見る
             </a>
-            <p className="hero-note">
-              案件名・要件・予算帯など、複数の条件で探索できます。
-            </p>
           </div>
-        </div>
 
-        <div className="hero-section__panel">
-          <div className="stats-grid">
-            {stats.map((stat) => (
-              <article className="stat-card" key={stat.label}>
-                <p className="stat-card__label">{stat.label}</p>
-                <p className="stat-card__value">{stat.value}</p>
-                <p className="stat-card__supporting">{stat.supportingText}</p>
-              </article>
+          <p className="hero-section__stats-inline">
+            {stats.map((stat, i) => (
+              <span key={stat.label}>
+                {i > 0 ? <span className="hero-section__stats-sep">/</span> : null}
+                <span className="hero-section__stats-num">{stat.value}</span>
+                {' '}
+                <span className="hero-section__stats-label">{stat.label}</span>
+              </span>
             ))}
-          </div>
+          </p>
         </div>
       </div>
 
