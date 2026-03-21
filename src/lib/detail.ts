@@ -246,6 +246,30 @@ export const getDetailLinkMeta = (work: Work): DetailLinkMeta | null => {
  *   3. バッジ — カード・モーダル上に「Case Study」バッジを表示
  *      （detailUrl がある作品を視覚的に示唆。クリック導線はモーダル内に集約）
  */
+/** siteUrl リンクに必要な属性をまとめて返す。 */
+export interface SiteLinkMeta {
+  /** サニタイズ済み URL */
+  href: string
+  /** CTA ラベル */
+  label: string
+  /** target 属性 */
+  target: '_blank'
+  /** rel 属性 */
+  rel: 'noopener noreferrer'
+}
+
+export const getSiteLinkMeta = (work: Work): SiteLinkMeta | null => {
+  const safeUrl = getSafeDetailUrl(work.siteUrl)
+  if (safeUrl === null) return null
+
+  return {
+    href: safeUrl,
+    label: 'サイトを見る ↗',
+    target: '_blank',
+    rel: 'noopener noreferrer',
+  }
+}
+
 export interface WorkNavigationConfig {
   /** カードのプライマリ CTA ラベル（全作品共通） */
   cardActionLabel: string
@@ -255,6 +279,8 @@ export interface WorkNavigationConfig {
   caseStudyLink: DetailLinkMeta | null
   /** カード・モーダル上に「ケーススタディあり」バッジを出すか */
   showCaseStudyBadge: boolean
+  /** 外部サイトへのリンク設定（siteUrl が無効なら null） */
+  siteLink: SiteLinkMeta | null
 }
 
 /**
@@ -263,11 +289,13 @@ export interface WorkNavigationConfig {
  */
 export const getWorkNavigationConfig = (work: Work): WorkNavigationConfig => {
   const caseStudyLink = getDetailLinkMeta(work)
+  const siteLink = getSiteLinkMeta(work)
   return {
     cardActionLabel: '概要を見る',
     hasCaseStudy: caseStudyLink !== null,
     caseStudyLink,
     showCaseStudyBadge: caseStudyLink !== null,
+    siteLink,
   }
 }
 

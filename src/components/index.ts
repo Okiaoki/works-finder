@@ -17,7 +17,9 @@ export { ComparePanel } from './compare/ComparePanel'
 // Detail
 export { DetailModal } from './detail/DetailModal'
 
+// Contact
+export { ContactFormModal } from './contact/ContactFormModal'
+
 // Sections
 export { HeroSection } from './sections/HeroSection'
-export { ProjectIntroSection } from './sections/ProjectIntroSection'
 export { ConsultationSection } from './sections/ConsultationSection'

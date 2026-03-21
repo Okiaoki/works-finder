@@ -254,6 +254,17 @@ export function DetailModal({
               {isFavorite ? '保存済み' : '保存'}
             </button>
 
+            {navConfig.siteLink !== null ? (
+              <a
+                href={navConfig.siteLink.href}
+                className="card-action card-action--primary"
+                target={navConfig.siteLink.target}
+                rel={navConfig.siteLink.rel}
+              >
+                {navConfig.siteLink.label}
+              </a>
+            ) : null}
+
             {navConfig.caseStudyLink !== null ? (
               <a
                 href={navConfig.caseStudyLink.href}

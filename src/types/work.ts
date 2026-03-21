@@ -7,6 +7,7 @@ export interface Work {
   // List-safe asset fields
   thumbnail: string
   thumbnailFallback?: string
+  fullPageScreenshot?: string | null
 
   // Classification
   category?: string
@@ -53,4 +54,11 @@ export interface Work {
   // コンポーネントは getWorkNavigationConfig() の戻り値だけで導線を出し分ける。
   // ---------------------------------------------------------------------------
   detailUrl?: string | null
+
+  // ---------------------------------------------------------------------------
+  // 外部サイトリンク
+  // ---------------------------------------------------------------------------
+  // siteUrl は制作物の公開 URL。GitHub Pages 等でホストされたライブサイトへのリンク。
+  // ---------------------------------------------------------------------------
+  siteUrl?: string | null
 }

@@ -91,7 +91,9 @@ export function WorkCard({
   const tagItems = formatTags(work.tags)
   const metaItems = createMetaItems(work)
   const navConfig = getWorkNavigationConfig(work)
+  const hasFullPage = Boolean(work.fullPageScreenshot)
   const cardClassParts = ['work-card']
+  if (hasFullPage) cardClassParts.push('work-card--has-fullpage')
   if (isCompared) cardClassParts.push('work-card--compared')
   if (isFavorite) cardClassParts.push('work-card--favorited')
   const cardClassName = cardClassParts.join(' ')
@@ -100,13 +102,22 @@ export function WorkCard({
     <article className={cardClassName}>
       {/* ---- サムネイル + バッジ ---- */}
       <div className="work-card__media">
-        <img
-          className="work-card__image"
-          src={getWorkImagePath(work)}
-          alt={`${work.title} のサムネイル`}
-          loading="lazy"
-          onError={handleImageError}
-        />
+        {hasFullPage ? (
+          <img
+            className="work-card__fullpage-image"
+            src={work.fullPageScreenshot!}
+            alt={`${work.title} のフルページプレビュー`}
+            loading="lazy"
+          />
+        ) : (
+          <img
+            className="work-card__image"
+            src={getWorkImagePath(work)}
+            alt={`${work.title} のサムネイル`}
+            loading="lazy"
+            onError={handleImageError}
+          />
+        )}
 
         <div className="work-card__badges">
           {work.isFeatured ? (
@@ -190,6 +201,18 @@ export function WorkCard({
           >
             {isFavorite ? '保存済み' : '保存'}
           </button>
+
+          {/* 外部サイトリンク — siteUrl がある作品のみ表示 */}
+          {navConfig.siteLink !== null ? (
+            <a
+              className="card-action card-action--secondary work-card__site-link"
+              href={navConfig.siteLink.href}
+              target={navConfig.siteLink.target}
+              rel={navConfig.siteLink.rel}
+            >
+              {navConfig.siteLink.label}
+            </a>
+          ) : null}
 
           {/* 案内テキスト — detailUrl がある作品のみ表示。
               ケーススタディへのリンクはモーダル footer に集約し、

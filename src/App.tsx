@@ -8,11 +8,11 @@ import {
   CompareBar,
   ComparePanel,
   ConsultationSection,
+  ContactFormModal,
   DetailModal,
   FilterPanel,
   Footer,
   HeroSection,
-  ProjectIntroSection,
   ResultsToolbar,
   SearchPanel,
   WorksGrid,
@@ -229,6 +229,20 @@ function App() {
   // slug を保持し、全件 works から Work オブジェクトを解決する。
   // -------------------------------------------------------------------------
 
+  // -------------------------------------------------------------------------
+  // Contact form state
+  // -------------------------------------------------------------------------
+
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false)
+
+  const handleOpenContactForm = useCallback(() => {
+    setIsContactFormOpen(true)
+  }, [])
+
+  const handleCloseContactForm = useCallback(() => {
+    setIsContactFormOpen(false)
+  }, [])
+
   const [detailSlug, setDetailSlug] = useState<string | null>(null)
 
   const detailWork = useMemo(
@@ -441,6 +455,19 @@ function App() {
 
   return (
     <main className={`app-shell${shouldShowCompareBar(compareSlugs) ? ' app-shell--has-compare-bar' : ''}`}>
+      <header className="site-header">
+        <div className="site-header__inner">
+          <p className="site-header__title">Works Finder</p>
+          <button
+            type="button"
+            className="primary-button site-header__cta"
+            onClick={handleOpenContactForm}
+          >
+            制作について相談する
+          </button>
+        </div>
+      </header>
+
       <div className="app-container">
         <HeroSection
           stats={[
@@ -484,8 +511,6 @@ function App() {
           onQueryChange={handleSearchChange}
           onApplyPopularTag={handleApplyPopularTag}
         />
-        <ProjectIntroSection />
-
         <section
           className="archive-section explore-section"
           id="archive"
@@ -529,7 +554,7 @@ function App() {
             </div>
           </div>
         </section>
-        <ConsultationSection content={consultationContent} />
+        <ConsultationSection onOpenContactForm={handleOpenContactForm} />
         <Footer />
       </div>
 
@@ -548,6 +573,10 @@ function App() {
           onClose={handleCloseComparePanel}
           onRemove={handleRemoveFromCompare}
         />
+      ) : null}
+
+      {isContactFormOpen ? (
+        <ContactFormModal onClose={handleCloseContactForm} />
       ) : null}
 
       {detailWork !== null ? (
