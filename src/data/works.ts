@@ -374,4 +374,38 @@ export const works: Work[] = [
     siteUrl: 'https://okiaoki.github.io/AokiEstate/',
     isConcept: false,
   },
+
+  // -------------------------------------------------------------------------
+  // work-11: Bistro Aoki
+  // -------------------------------------------------------------------------
+  {
+    id: 'work-11',
+    title: 'Bistro Aoki',
+    slug: 'bistro-aoki',
+    ...createWorkImageSet('bistro-aoki', 'jpg', false, true),
+    genre: 'カフェ・飲食',
+    siteType: '店舗サイト',
+    purpose: '集客・予約促進',
+    summary:
+      '表参道の隠れ家イタリアン「Bistro Aoki」のサイト。ダークトーンの洗練されたビジュアルで店舗の世界観を表現し、コンセプト・メニュー・ギャラリー・アクセス・予約の全6ページで来店導線を設計。',
+    pageCount: 6,
+    scale: null,
+    features: ['アニメーション', 'フォーム', '予約導線', 'ギャラリーUI', 'Google Maps'],
+    techTags: ['JavaScript'],
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+    budgetRange: '¥250,000〜400,000',
+    durationRange: null,
+    tags: ['レストランサイト', 'マルチページ', 'ダークUI', '料理ギャラリー', '予約フォーム', '世界観設計'],
+    year: 2026,
+    isFeatured: true,
+    hasCms: false,
+    hasAnimation: true,
+    hasForm: true,
+    challenge:
+      'ダークトーンで統一した高級感のあるビジュアルと、料理写真12枚のギャラリー・予約フォームを組み合わせ、世界観を崩さずに来店導線を確保した。',
+    designTone: 'ダーク / エレガント',
+    detailUrl: null,
+    siteUrl: 'https://okiaoki.github.io/BistroAoki/',
+    isConcept: false,
+  },
 ]
