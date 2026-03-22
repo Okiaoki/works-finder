@@ -340,4 +340,38 @@ export const works: Work[] = [
     siteUrl: 'https://okiaoki.github.io/Aoki-Animation/',
     isConcept: false,
   },
+
+  // -------------------------------------------------------------------------
+  // work-10: Aoki Estate
+  // -------------------------------------------------------------------------
+  {
+    id: 'work-10',
+    title: 'Aoki Estate',
+    slug: 'aoki-estate',
+    ...createWorkImageSet('aoki-estate', 'jpg', false, true),
+    genre: '不動産',
+    siteType: 'コーポレートサイト',
+    purpose: '物件紹介・集客・問い合わせ',
+    summary:
+      '杉並・中野・世田谷エリアに密着する架空の不動産会社サイト。賃貸・売買物件一覧（検索フィルタリング・並び替え対応）、物件詳細6件（ギャラリーUI・モーダル拡大・スワイプ対応）、会社概要・スタッフ紹介・オーナー向け・お客様の声・コラム・採用・お問い合わせ（バリデーション・確認ステップ）の全16ページ構成。明朝体×ゴシック体のタイポグラフィとアースカラー基調のモダンナチュラルなデザイン。',
+    pageCount: 16,
+    scale: null,
+    features: ['アニメーション', 'フォーム', '物件検索', 'ギャラリーUI', '並び替え', 'アコーディオン'],
+    techTags: ['JavaScript'],
+    techStack: ['HTML', 'CSS', 'JavaScript'],
+    budgetRange: '¥600,000〜900,000',
+    durationRange: null,
+    tags: ['不動産サイト', 'マルチページ', '物件検索UI', 'ギャラリーモーダル', 'フォームバリデーション', 'タイポグラフィ', 'アクセシビリティ'],
+    year: 2026,
+    isFeatured: true,
+    hasCms: false,
+    hasAnimation: true,
+    hasForm: true,
+    challenge:
+      '賃貸・売買合計6物件のデータ属性ベースのフィルタリング・並び替え、ECサイト風のギャラリーUI（矢印ナビ・スワイプ・モーダル）、3ステップフォームなど多数のVanilla JS機能を実装しつつ、全16ページのデザイン統一性とWCAG AAコントラスト準拠を両立させた。',
+    designTone: 'モダンナチュラル / アースカラー',
+    detailUrl: null,
+    siteUrl: 'https://okiaoki.github.io/AokiEstate/',
+    isConcept: false,
+  },
 ]
