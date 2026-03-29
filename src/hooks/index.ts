@@ -1,1 +1,0 @@
-export { useModalDialog } from './useModalDialog'
